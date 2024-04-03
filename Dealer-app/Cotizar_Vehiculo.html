@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Cotizar Vehículo</title>
+    <link rel="stylesheet" href="estiloform.css">
+    <link rel="icon" type="image/jpg" href="img/icon.gif">
+</head>
+
+<body>
+
+    <header>
+
+        <a href="index.html" class="logo"><img src="img/Viticars.png" alt="" width="200px" height="58px"></a>
+
+
+        <nav class="navbar">
+            <a class="active" href="#inicio">Inicio</a>
+            <a href="#vehiculos">Vehículos y +</a>
+            <a href="#administracion">Administración</a>
+            <a href="#directorio">Directorio</a>
+            <a href="#vende">Vende</a>
+            <a href="#galeria">Galería de fotos</a>
+            <a href="#contacto">Contáctanos</a>
+        </nav>
+
+    </header>
+    <!-- Empieza Formulario -->
+    <script language='javascript'>
+        function validacion() {
+
+            nombre = document.getElementById("name_input").value;
+            if (nombre == "") {
+                alert("*Debe escribir su nombre*")
+                return false;
+            }
+            apellido = document.getElementById("lastname_input").value;
+            if (apellido == "") {
+                alert("*Debe escribir su apellido*")
+                return false;
+            }
+            email = document.getElementById("email_input").value;
+            if (email == "") {
+                alert("*Debe escribir su correo electrónico*")
+                return false;
+            }
+            telefono = document.getElementById("telephone_input").value;
+            if (telefono == "") {
+                alert("*Debe digitar su número telefónico*")
+                return false;
+            }
+            sucursal = document.getElementById("subject_input").value;
+            if (sucursal == "") {
+                alert("*Debe escoger una sucursal*")
+                return false;
+            }
+            mensaje = document.getElementById("mensaje").value;
+            if (mensaje == "") {
+                alert("*Debe indicar día y horario de preferencia*")
+                return false;
+            }
+        }
+
+        var a, arr;
+
+        function select() {
+            a = document.getElementById("marca_select").value;
+            if (a === "Hyundai") {
+                arr = ["Bayon", "Elantra", "Genesis", "H1", "i10", "i20", "i30", "i40"];
+            } else if (a === "Porsche") {
+                arr = ["Boxter", "Cayenne", "Cayman", "Macan", "Panamera", "Taycan"];
+            } else if (a === "Ferrari") {
+                arr = ["458 Italia", "488 GTB", "488 Spider", "599 GTB Fiorano", "California", "F12 Berlinetta"];
+            } else if (a === "Ford") {
+                arr = ["EcoSport", "Explorer", "Fiesta", "Focus", "KUGA"];
+            } else if (a === "Jeep") {
+                arr = ["Cherokee", "Compass", "Gladiator", "Grand Cherokee", "Renegade", "Wrangler"];
+            } else if (a === "Maserati") {
+                arr = ["Ghibli", "Levante", "Levante", "Levante", "Quattroporte"];
+            } else if (a === "Mercedes-Benz") {
+                arr = ["AMG GT", "Clase A", "Clase B", "Clase C", "Clase E", "Clase G"];
+            } else if (a === "Toyota") {
+                arr = ["Auris", "Avensis", "Aygo", "Camry", "Corolla", "Prius"];
+            }
+
+            var string = "";
+
+            for (i = 0; i < arr.length; i++) {
+                string = string + "<option value=" + arr[i] + ">" + arr[i] + "</option>";
+            }
+            document.getElementById("choose_model").innerHTML = string;
+
+        }
+
+        const API_KEY = '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'
+        const outputElement = document.querySelector('#descripcion_vehiculo')
+
+        async function generarDescripcion() {
+            const marca = document.getElementById('marca_select').value;
+            const modelo = document.getElementById('choose_model').value;
+
+            // Verificar si se ha seleccionado una marca y un modelo válidos
+            if (marca === '' || modelo === '') {
+                alert('Por favor, seleccione una marca y un modelo');
+                return;
+            }
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${API_KEY}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: "gpt-3.5-turbo",
+                    messages: [{
+                        role: "user",
+                        content: `Describir un vehículo ${marca} ${modelo}`
+                    }],
+                    temperature: 0
+                })
+
+            }
+            try {
+                const response = await fetch('https://api.openai.com/v1/chat/completions', options)
+                const data = await response.json()
+                console.log(data)
+                outputElement.textContent = data.choices[0].message.content
+            } catch (error) {
+                console.error(error)
+            }
+        }
+    </script>
+
+    <h1 class="titulo"><b>Solicitar Cotización de Vehículo</b></h1>
+    <h5 class="subtitulo">Seleccione un Vehículo</h5>
+    <form action="" class="form1">
+        <center>
+            <div class="select">
+                <select id="marca_select" class="selectmarca" onchange="select()">
+                <option disabled hidden selected value="">Seleccione una Marca</option>
+                <option value="Hyundai">Hyundai</option>
+                <option value="Porsche">Porsche</option>
+                <option value="Ferrari">Ferrari</option>
+                <option value="Ford">Ford</option>
+                <option value="Jeep">Jeep</option>
+                <option value="Maserati">Maserati</option>
+                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                <option value="Toyota">Toyota</option>
+            </select>
+                <br>
+                <select id="choose_model" class="selectmodelo">
+                    <option>Seleccione un Modelo</option>
+                </select>
+                <button onclick="generarDescripcion()" id="form_button3">Generar Descripción</button>
+                <p id="descripcion_vehiculo">Descripción de Vehículo</p>
+
+            </div>
+        </center>
+    </form>
+    <section>
+
+        <div id="container">
+            <h1 class="detalles">&bull; Detalles &bull;</h1>
+            <div class="underline">
+            </div>
+
+            <form onsubmit='return validacion()' method='post' action='send_page.html' class="form2">
+                <div class="name">
+                    <input type="text" placeholder="Nombre*" name="name" id="name_input">
+                </div>
+                <div class="email">
+                    <input type="email" placeholder=" e-mail*" name="email" id="email_input">
+                </div>
+                <div class="lastname">
+                    <input type="text" placeholder="Apellido/s*" name="lastname" id="lastname_input">
+                </div>
+                <div class="telephone">
+                    <input type="text" placeholder="Teléfono*" name="telephone" id="telephone_input">
+                </div>
+                <div class="subject">
+                    <select class="sucursal" placeholder="seleccione la sucursal*" name="subject" id="subject_input">
+                    <option value="" disabled hidden selected>Seleccione la sucursal*</option>
+                    <option value="1">Santo Domingo </option>
+                    <option value="2">Santiago</option>
+                    <option value="3">Punta Cana</option>
+                    </select>
+                </div>
+                <div class="message">
+                    <textarea rows="2" id="mensaje" name="mensaje" placeholder="Indicar día y horario de preferencia (Se verificará disponibilidad y le estaremos llamando para agendar la cita)*"></textarea>
+                </div>
+                <div class="submit">
+                    <input type="submit" value="Enviar Datos" id="form_button" />
+                    <input type="reset" value="Vaciar Datos" id="form_button">
+
+                </div>
+            </form>
+            <!--fin del form-->
+        </div>
+        <!--fin del contenedor-->
+    </section>
+
+
+    <!-- Empieza Pie de Pagina -->
+    <section class="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>Horarios</h3>
+                <a>LUN - VIER  9:00am - 6:00pm</a>
+                <a>SABADOS    9:00am - 1:00pm</a>
+
+            </div>
+
+            <div class="box">
+                <h3>Ubicación</h3>
+                <a href="https://goo.gl/maps/6zMndQc9QtPne5qg7" class="href">Calle El Sol, #123, <br> Santo Domingo Este, Rep. Dom.</a>
+
+            </div>
+
+            <div class="box">
+                <h3>Contáctanos</h3>
+                <a href="#" class="href">+1 809 555 1234</a>
+                <a href="mailto:classeashley@gmail.com" class="href">info@viticars.com.do</a>
+                <a href="mailto:jhonalmanzar25@gmail.com" class="href">ventas.viticars@gmail.com</a>
+            </div>
+        </div>
+
+        <div class="credit"> Copyright @ 2021 By <span>Classe</span> </div>
+
+    </section>
+</body>
+
+</html>
