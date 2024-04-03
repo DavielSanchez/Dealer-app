@@ -1,0 +1,442 @@
+body, html{
+    margin: 0px;
+}
+/*empieza menu*/
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+
+:root{
+    --green:#27ae60;
+    --black:#192a56;
+    --light-color:#666;
+    --box-shadow:0 .5rem 1.5rem rgba(0,0,0,.1);
+    --red: #d62c2c;
+    --light-gray:rgb(145, 143, 143);
+    --white: #fff;
+}
+
+* {
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    transition: all .2s linear;
+}
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+header{
+    position: fixed;
+    top:0; left: 0; right:0;
+    background: #fff;
+    padding:1rem 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--box-shadow);
+}
+
+header .navbar a{
+    font-size: 1.7rem;
+    border-radius: .5rem;
+    padding:.5rem 1.5rem;
+    color:var(--light-color);
+}
+
+header .navbar a:hover{
+    color:#fff;
+    background: var(--red);
+}
+/*termina menu*/
+
+section{
+    padding:2rem 9%;
+}
+
+section:nth-child(even){
+    background:#eee;
+}
+
+.btn{
+    margin-top: 1rem;
+    display: inline-block;
+    font-size: 1.7rem;
+    color:#fff;
+    background: var(--black);
+    border-radius: .5rem;
+    cursor: pointer;
+    padding:.8rem 3rem;
+}
+
+.btn:hover{
+    background: var(--red);
+    letter-spacing: .1rem;
+}
+
+/*Empieza Cotizacion*/
+.titulo{
+    color: #58595b;
+    display: block;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 43px;
+    margin-top: 150px;
+    text-align: center;
+}
+
+.subtitulo{
+    margin-top: 4.5rem!important;
+    font-size: 18px;
+    line-height: 1.25em;
+    font-weight: normal;
+    text-align: center;
+    color: #58595b;
+}
+
+.selectmarca{
+    background: #f3f3f3 !important;
+    cursor: pointer;
+    padding: 11px 50px 10px 20px;
+    height: 44px;
+    color: #31353c;
+    text-align: left;
+    margin-bottom: 2rem!important;
+    font-size: 18px;
+}
+.selectmodelo{
+    background: #f3f3f3 !important;
+    cursor: pointer;
+    padding: 11px 50px 10px 20px;
+    height: 44px;
+    color: #31353c;
+    text-align: left;
+    margin-bottom: 1rem!important;
+    font-size: 18px;
+}
+
+#descripcion_vehiculo {
+    margin-top: 20px;
+    padding: 10px;
+    color: #31353c;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    line-height: 1.25em;
+    font-weight: normal;
+    text-align: left;
+  }
+  
+button {
+    overflow: visible;
+  }
+  
+  button, select {
+    text-transform: none;
+  }
+  
+  
+  #container {
+    border: solid 3px #474544;
+    max-width: 950px;
+    margin: 30px auto;
+    padding: 30px 40px;
+  }
+  
+  .form1 {
+    padding: auto;
+    margin: 50px auto ;
+    width: 900px;
+  }
+
+  .form2{
+      padding-top: 30px;
+      padding: 30px;
+  }
+  
+ .detalles {
+    color: #474544;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 7px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  .underline {
+    border-bottom: solid 2px #474544;
+    margin: 7px auto;
+    width: 80px;
+  }
+  
+  
+  .email {
+      float: right;
+      width: 45%;
+  }
+  
+  input[type='text'], [type='email'], [type='checkbox'],select, textarea {
+      background: none;
+       border: none;
+      border-bottom: solid 2px #474544;
+      color: #474544;
+      font-size: 1.4em;
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin: 0em 0 1.875em 0;
+      padding: 0 0 0.875em 0;
+      text-transform: uppercase;
+      width: 100%;
+  
+  }
+
+  
+  input[type='text']:focus, [type='email']:focus, textarea:focus {
+      outline: none;
+      padding: 0 0 0.875em 0;
+  }
+  
+  .message {
+      float: none;
+  }
+  
+  .name {
+      float: left;
+      width: 45%;
+  }
+  .lastname {
+    float: left;
+    width: 45%;
+}
+  
+  select::-ms-expand {
+    display: none;
+  }
+  
+  .subject {
+    width: 100%;
+  }
+  
+  .telephone {
+    width: 45%;
+    float: right;
+  }
+  
+  .checkbox{
+    float: left;
+  }
+  ::-webkit-input-placeholder {
+      color: #474544;
+      
+  }
+  
+
+  #form_button {
+    background: none;
+    border: solid 2px #474544;
+    color: #474544;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    outline: none;
+    padding: 20px 35px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    margin-right: 10px;
+  }
+
+  #form_button2 {
+    background: none;
+    border: solid 2px #474544;
+    color: #474544;
+    cursor: pointer;
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 20px 35px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    margin-right: 10px;
+  }
+
+  #form_button3 {
+    background: none;
+    border: solid 2px #474544;
+    color: #474544;
+    cursor: pointer;
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 20px 35px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    margin-top: 20px;
+  }
+
+  
+  #form_button3:hover {
+    background: #474544;
+    color: #F2F3EB;
+  }
+  
+  #form_button:hover {
+    background: #474544;
+    color: #F2F3EB;
+  }
+
+
+
+  #form_button2:hover {
+    background: #474544;
+    color: #F2F3EB;
+  }
+
+  .formbotones{
+      text-align: center;
+      margin: 48px;
+  }
+  
+/*Termina Cotizacion*/
+/*Empieza Sub-Paginas*/
+.sub-heading{
+    text-align: center;
+    color:var(--red);
+    font-size: 2rem;
+    padding-top: 1rem;
+}
+
+.heading{
+    text-align: center;
+    color:var(--black);
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    text-transform: uppercase;
+}
+.titulo2{
+    color: #58595b;
+    display: block;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 43px;
+    margin-top: 110px;
+    text-align: center;
+}
+.controles{
+    text-align: center;
+    padding-top: 10px;
+}
+#cont-marcas {
+    float: left;
+    width: 100%;
+    height: auto;
+    padding: 2% 0;
+    background-image: url(img/fondo16.png);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    margin-bottom: 3%;
+    padding-left: 100px;
+}
+
+.wrapper {
+    width: 100%;
+    margin: 0;
+}
+.carousel {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    margin-top: 30px;
+}
+#imagen {
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+}
+.h1{
+    text-align: center;
+    margin-top: 2rem;
+  }
+#customers {
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+  }
+  
+  #customers td, #customers th {
+    padding: 8px;
+    font-size: 1.5rem;
+    padding-left: 20px;
+  }
+  
+  
+  #customers tr:nth-child(odd){background-color: #ffffffe0;}
+    
+  #customers tr:nth-child(even){background-color: #f2f2f2e0;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(209, 48, 20);
+    color: white;
+  }
+/*Empieza Footer*/
+.footer .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap:1.5rem;
+    padding-left: 20px;
+    margin-bottom: 25px;
+    
+}
+
+.footer .box-container .box h3{
+    padding:.5rem 0;
+    font-size: 2.5rem;
+    color:var(--black);
+}
+
+.footer .box-container .box a{
+    display: block;
+    padding:.5rem 0;
+    font-size: 1.5rem;
+    color:var(--light-color);
+}
+
+.footer .box-container .box .href{
+    display: block;
+    padding:.5rem 0;
+    font-size: 1.5rem;
+    color:var(--light-color);
+}
+
+.footer .box-container .box .href:hover{
+    color:var(--red);
+    text-decoration: underline;
+}
+
+.footer .credit{
+    text-align: center;
+    border-top: .1rem solid rgba(0,0,0,.1);
+    font-size: 2rem;
+    color:var(--black);
+    padding:.5rem;
+    padding-top: 1rem;
+    margin-top: 1rem;
+    
+}
+
+.footer .credit span{
+    color:var(--red);
+}
+/*Termina footer*/
+
+
+
+
