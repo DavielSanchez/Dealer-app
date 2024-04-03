@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Chevrolet Camaro</title>
+    <link rel="stylesheet" href="estiloform.css">
+    <link  rel="icon" type="image/jpg" href="img/icon.gif">
+    <script>
+      window.onload = function () {
+          // Variables
+          const IMAGENES = [
+              'img/chevrolet1.jpg',
+              'img/chevrolet2.jpg',
+              'img/chevrolet3.jpg',
+          ];
+          const TIEMPO_INTERVALO_MILESIMAS_SEG = 1000;
+          let posicionActual = 0;
+          let $botonRetroceder = document.querySelector('#retroceder');
+          let $botonAvanzar = document.querySelector('#avanzar');
+          let $imagen = document.querySelector('#imagen');
+          let $botonPlay = document.querySelector('#play');
+          let $botonStop = document.querySelector('#stop');
+          let intervalo;
+
+          // Funciones
+
+          /**
+           * Funcion que cambia la foto en la siguiente posicion
+           */
+          function pasarFoto() {
+              if(posicionActual >= IMAGENES.length - 1) {
+                  posicionActual = 0;
+              } else {
+                  posicionActual++;
+              }
+              renderizarImagen();
+          }
+
+          /**
+           * Funcion que cambia la foto en la anterior posicion
+           */
+          function retrocederFoto() {
+              if(posicionActual <= 0) {
+                  posicionActual = IMAGENES.length - 1;
+              } else {
+                  posicionActual--;
+              }
+              renderizarImagen();
+          }
+
+          /**
+           * Funcion que actualiza la imagen de imagen dependiendo de posicionActual
+           */
+          function renderizarImagen () {
+              $imagen.style.backgroundImage = `url(${IMAGENES[posicionActual]})`;
+          }
+
+          /**
+           * Activa el autoplay de la imagen
+           */
+          function playIntervalo() {
+              intervalo = setInterval(pasarFoto, TIEMPO_INTERVALO_MILESIMAS_SEG);
+              // Desactivamos los botones de control
+              $botonAvanzar.setAttribute('disabled', true);
+              $botonRetroceder.setAttribute('disabled', true);
+              $botonPlay.setAttribute('disabled', true);
+              $botonStop.removeAttribute('disabled');
+
+          }
+
+          /**
+           * Para el autoplay de la imagen
+           */
+          function stopIntervalo() {
+              clearInterval(intervalo);
+              // Activamos los botones de control
+              $botonAvanzar.removeAttribute('disabled');
+              $botonRetroceder.removeAttribute('disabled');
+              $botonPlay.removeAttribute('disabled');
+              $botonStop.setAttribute('disabled', true);
+          }
+
+          // Eventos
+          $botonAvanzar.addEventListener('click', pasarFoto);
+          $botonRetroceder.addEventListener('click', retrocederFoto);
+          $botonPlay.addEventListener('click', playIntervalo);
+          $botonStop.addEventListener('click', stopIntervalo);
+          // Iniciar
+          renderizarImagen();
+      } 
+  </script>
+</head>
+<body>
+    
+<header>
+
+    <a href="index.html" class="logo"><img src="img/Viticars.png" alt="" width="200px" height="58px"></a>
+    <nav class="navbar">
+        <a class="active" href="#inicio">Inicio</a>
+        <a href="#vehiculos">Vehículos y +</a>
+        <a href="#administracion">Administración</a>
+        <a href="#directorio">Directorio</a>
+        <a href="#vende">Vende</a>
+        <a href="#galeria">Galería de fotos</a>
+        <a href="#contacto">Contáctanos</a>
+    </nav>
+    
+</header>
+<section>
+    <h1 class="titulo2"><b>Chevrolet Camaro</b></h1>
+    <div class="underline"></div>
+      <div class="carousel">
+        <button id="retroceder"> <img src="img/1111.png"height="30" width="30"> </button>
+        <div id="imagen"></div>
+        <button id="avanzar"> <img src="img/2222.png" height="30" width="30"></button>
+      </div>
+      <div class="controles">
+          <button id="play">Play</button>
+          <button id="stop" disabled>Stop</button>
+      </div>
+    </section>
+    <section class="marcas" id="marcas">
+        <h3 class="sub-heading"> Datos Sobre El Carro </h3>
+        <h1 class="heading"> Cuotas desde:  RD$ 55,569 / mes </h1>
+    </section>
+    <div id="cont-marcas">
+        <div class="wrapper">
+          <table id="customers">
+            <tr>
+              <th>Caracteristicas </th>
+              <th>Info.</th>
+              
+            </tr>
+            <tr>
+              <td>Precio:</td>
+              <td>US$ 55,900 </td>
+            </tr>
+            <tr>
+              <td>Motor:</td>
+              <td> 5.0, 7 cilindros</td>
+            </tr>
+            <tr>
+              <td>Exterior:</td>
+              <td>Gris</td>
+            </tr>
+            <tr>
+              <td>Interior:</td>
+              <td>Negro</td>
+            </tr>
+            <tr>
+              <td>Combustible:</td>
+              <td>Gasolina</td>
+            </tr>
+            <tr>
+              <td>Transmisión:</td>
+              <td>Automática</td>
+            </tr>
+            <tr>
+              <td>Tracción:</td>
+              <td>Trasera</td>
+            </tr>
+            <tr>
+              <td>Tipo:</td>
+              <td>Coupé/Deportivo </td>
+            </tr>
+            <tr>
+              <td>Uso:</td>
+              <td>N/D Mi     </td>
+            </tr>
+            <tr>
+              <td>Puertas:</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>	Pasajeros:	</td>
+              <td>4</td>
+            </tr>
+          </table>
+          </div>
+    </div>
+
+<!-- Empieza Pie de Pagina -->
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>Horarios</h3>
+            <a>LUN - VIER  9:00am - 6:00pm</a>
+            <a>SABADOS    9:00am - 1:00pm</a>
+
+        </div>
+
+        <div class="box">
+            <h3>Ubicación</h3>
+            <a href="https://goo.gl/maps/6zMndQc9QtPne5qg7" class="href">Calle El Sol, #123, <br> Santo Domingo Este, Rep. Dom.</a>
+
+        </div>
+
+        <div class="box">
+            <h3>Contáctanos</h3>
+            <a href="#" class="href">+1 809 555 1234</a>
+            <a href="mailto:classeashley@gmail.com" class="href">info@viticars.com.do</a>
+            <a href="mailto:jhonalmanzar25@gmail.com" class="href">ventas.viticars@gmail.com</a>
+        </div>
+    </div>
+
+    <div class="credit"> Copyright @ 2021 By <span>Classe</span> </div>
+
+</section>
+</body>
+</html>
